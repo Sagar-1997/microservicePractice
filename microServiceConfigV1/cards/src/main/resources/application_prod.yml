@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile:
+        - "prod"
+cards:
+  message: "Welcome to Bank cards related prod APIs"
+  contactDetails:
+    name: "Ben Smith - prod Lead"
+    email: "smith@gmail.com"
+  onCallSupports:
+    - (555) 111-8979
+    - (555) 111-1234

@@ -1,0 +1,25 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: cards
+  profiles:
+    active: "qa"
+  datasource:
+    url: jdbc:mysql://localhost:3308/cardsdb
+    username: root
+    password: root
+  sql:
+    init:
+      mode: always #Spring Boot is used to control the initialization of SQL scripts in a JPA
+  jpa:
+    show-sql: true
+
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

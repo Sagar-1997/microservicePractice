@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: "configserver"
+  profiles:
+    #active: native
+    active: git
+  cloud:
+    config:
+      server:
+        #native:
+        #search-locations: "classpath:/config" to store in file we can use below
+        #search-locations: "file:///D:/Practice/config"
+        git:
+          uri: "https://github.com/Sagar-1997/microservice-config.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true #tell to clone remote to local repo during start
+          force-pull: true #override all local during pull from remote
+
+encrypt:
+  key: 5EE7174C468C555336E21D2ADC741 #we can use to key to encrypt and decrypt data that we putting in config server
+server:
+  port: 8071
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true

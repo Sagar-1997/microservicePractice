@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to Bank loans related local APIs"
+  contactDetails:
+    name: "Harry Potter - Developer"
+    email: "potter@gmail.com"
+  onCallSupports:
+    - (555) 123-2345
+    - (555) 345-5678

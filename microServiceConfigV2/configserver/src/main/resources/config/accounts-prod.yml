@@ -1,0 +1,8 @@
+accounts:
+  message: "Welcome to Bank accounts related Prod APIs"
+  contactDetails:
+    name: "Mark Simth - Prod Lead"
+    email: "mark@gmail.com"
+  onCallSupports:
+    - (111) 123-9999
+    - (999) 345-5678

@@ -1,0 +1,81 @@
+services:
+  configserver:
+    image: "sagar1235/configserver:1.4"
+    container_name: "configserver-ms"
+    ports:
+      - 8071:8071
+    # to check the health of config server we check the readiness api of actuator health
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
+  eurekaserver:
+    image: "sagar1235/eurekaserver:1.4"
+    container_name: "eurekaserver-ms"
+    ports:
+      - 8070:8070
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+    environment:
+      SPRING_APPLICATION_NAME: "eurekaserver"
+    extends:
+      file: common-config.yml
+      service: microservice-configserver-config
+
+  accounts:
+    image: "sagar1235/accounts:1.4"
+    container_name: "accounts-Ms"
+    ports:
+      - 8080:8080
+    #accounts will depends on configserver and we will wait util its health is up
+    extends:
+      file: common-config.yml
+      service: microservice-eurekaserver-config
+    environment:
+      SPRING_APPLICATION_NAME: "accounts"
+
+  cards:
+    image: "sagar1235/cards:1.4"
+    container_name: "cards-Ms"
+    ports:
+      - 9000:9000
+    extends:
+      file: common-config.yml
+      service: microservice-eurekaserver-config
+    environment:
+      SPRING_APPLICATION_NAME: "cards"
+
+  loans:
+    image: "sagar1235/loans:1.4"
+    container_name: loans-Ms
+    ports:
+      - "8090:8090"
+    environment:
+      SPRING_APPLICATION_NAME: "loans"
+    extends:
+      file: common-config.yml
+      service: microservice-eurekaserver-config
+  loans1:
+    image: "sagar1235/loans:1.4"
+    container_name: loans-Ms1
+    ports:
+      - "8091:8090"
+    environment:
+      SPRING_APPLICATION_NAME: "loans"
+    extends:
+      file: common-config.yml
+      service: microservice-eurekaserver-config
+
+networks:
+  bankMs:
+    driver: "bridge"

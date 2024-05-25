@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile:
+        - "qa"
+loans:
+  message: "Welcome to Bank cards related QA APIs"
+  contactDetails:
+    name: "Ben Smith - QA Lead"
+    email: "ben@gmail.com"
+  onCallSupports:
+    - (555) 111-1111
+    - (555) 111-0000

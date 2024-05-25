@@ -1,0 +1,8 @@
+loans:
+  message: "Welcome to Bank loans related prod APIs"
+  contactDetails:
+    name: "Rodrigo Dav - prod Lead"
+    email: "rodrigo@gmail.com"
+  onCallSupports:
+    - (555) 111-1111
+    - (555) 111-0000

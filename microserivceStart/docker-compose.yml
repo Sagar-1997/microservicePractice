@@ -1,0 +1,39 @@
+#define services
+services:
+  accounts:
+    image: "sagar1235/accounts:1.1"
+    container_name: accounts-ms
+    ports:
+      - 8080:8080
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bankMs
+  loans:
+    image: "sagar1235/loans:1.1"
+    container_name: loans-ms
+    ports:
+      - 8090:8090
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bankMs
+  cards:
+    image: "sagar1235/cards:1.1"
+    container_name: cards-ms
+    ports:
+      - 9000:9000
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bankMs
+
+networks:
+  bankMs:
+    driver: "bridge"

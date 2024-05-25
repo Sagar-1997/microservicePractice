@@ -1,0 +1,8 @@
+accounts:
+  message: "Welcome to Bank accounts related QA APIs"
+  contactDetails:
+    name: "Anna Jhonson - QA Lead"
+    email: "anna@gmail.com"
+  onCallSupports:
+    - (555) 123-9999
+    - (789) 345-5678
